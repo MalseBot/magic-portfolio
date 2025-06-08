@@ -112,7 +112,7 @@ export const Header = () => {
                     selected={pathname.startsWith("/work")}
                   />
                 </>
-              )},
+              )}
               {display.themeSwitcher && (
                 <>
                   <Line background="neutral-alpha-medium" vert maxHeight="24" />
