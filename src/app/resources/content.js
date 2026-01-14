@@ -1,4 +1,4 @@
-/** @format */
+﻿/** @format */
 
 const person = {
 	firstName: 'Eslam',
@@ -45,10 +45,10 @@ const home = {
 		display: true,
 		title: (
 			<>
-				Recent project: <strong className='ml-4'>WTeeth</strong>
+				Recent project: <strong className='ml-4'>Tas7e7</strong>
 			</>
 		),
-		href: 'https://github.com/MalseBot/wteeth',
+		href: '/work/Tas7e7',
 	},
 	subline: (
 		<>
@@ -62,7 +62,7 @@ const home = {
 const about = {
 	path: '/about',
 	label: 'About',
-	title: `About – ${person.name}`,
+	title: `About â€“ ${person.name}`,
 	description: `Meet ${person.name}, ${person.role} from ${person.location}`,
 	tableOfContent: {
 		display: true,
@@ -96,16 +96,31 @@ const about = {
 		title: 'Projects',
 		experiences: [
 			{
-				company: 'WTeeth',
-				timeframe: 'June 2025 – July 2025',
+				company: 'Tas7e7',
+				timeframe: '2025',
 				achievements: [
 					<>
-						Optimized form workflows that reduce data entry time by 50%,
-						drastically improving clinic efficiency.
+						Real-time POS and kitchen workflows keep orders moving from front of
+						house to prep without delays.
 					</>,
 					<>
-						Role-based authentication and encrypted session management to ensure
-						HIPAA/GDPR compliance.
+						Role-based access with inventory alerts and reporting for tighter
+						operational control.
+					</>,
+				],
+				images: [],
+			},
+			{
+				company: 'WTeeth',
+				timeframe: '2025',
+				achievements: [
+					<>
+						Healthcare-first UX with secure access control and protected routes
+						built in.
+					</>,
+					<>
+						Component-driven UI and data visualization patterns for fast
+						delivery of clinical features.
 					</>,
 				],
 				images: [
@@ -119,34 +134,16 @@ const about = {
 				],
 			},
 			{
-				company: 'YC Directory',
-				timeframe: 'Oct 2024 – Dec 2024',
+				company: 'DevConnector',
+				timeframe: '2024',
 				achievements: [
 					<>
-						Developed a dynamic startup pitch platform using Next.js and Sanity,
-						integrating authentication and automated posting for seamless
-						content management.
+						Full-stack developer network with profiles, posts, and GitHub
+						integration for real-world community flows.
 					</>,
 					<>
-						Optimized performance, reducing page load times by 90% compared to
-						previous methods, enhancing speed and user experience.
-					</>,
-				],
-				images: [],
-			},
-			{
-				company: 'Snapgram',
-				timeframe: 'March 2024 – June 2024',
-				achievements: [
-					<>
-						Developed an Instagram-inspired social media platform, integrating
-						modern features like unlimited scrolling for an immersive user
-						experience.
-					</>,
-					<>
-						Designed a responsive UI using React, Tailwind, and Vite, ensuring
-						seamless cross-device compatibility and boosting user engagement by
-						30%.
+						JWT authentication, protected routes, and a scalable MongoDB data
+						model for growth-ready features.
 					</>,
 				],
 				images: [],
@@ -206,10 +203,11 @@ const about = {
 const work = {
 	path: '/work',
 	label: 'Work',
-	title: `Projects – ${person.name}`,
+	title: `Projects â€“ ${person.name}`,
 	description: `dev projects by ${person.name}`,
 	// Create new project pages by adding a new .mdx file to app/blog/posts
 	// All projects will be listed on the /home and /work routes
 };
 
 export { person, social, home, about, work };
+

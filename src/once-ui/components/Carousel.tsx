@@ -30,8 +30,14 @@ const Carousel: React.FC<CarouselProps> = ({
   const nextImageRef = useRef<HTMLImageElement | null>(null);
   const transitionTimeoutRef = useRef<NodeJS.Timeout | undefined>(undefined);
 
+  const isVideoUrl = (src: string) =>
+    /\.(mp4|webm|ogg)(\?.*)?$/i.test(src) || src.includes("drive.google.com");
+
   const preloadNextImage = (nextIndex: number) => {
     if (nextIndex >= 0 && nextIndex < images.length) {
+      if (isVideoUrl(images[nextIndex].src)) {
+        return;
+      }
       nextImageRef.current = new Image();
       nextImageRef.current.src = images[nextIndex].src;
     }
@@ -77,6 +83,8 @@ const Carousel: React.FC<CarouselProps> = ({
     return null;
   }
 
+  const activeImage = images[activeIndex];
+
   return (
     <Flex fillWidth gap="12" direction="column" {...rest}>
       <RevealFx
@@ -87,20 +95,40 @@ const Carousel: React.FC<CarouselProps> = ({
         aspectRatio={aspectRatio}
         speed="fast"
       >
-        <SmartImage
-          sizes={sizes}
-          priority
-          radius="l"
-          border="neutral-alpha-weak"
-          alt={images[activeIndex]?.alt}
-          aspectRatio={aspectRatio}
-          src={images[activeIndex]?.src}
-          style={{
-            ...(images.length > 1 && {
-              cursor: "pointer",
-            }),
-          }}
-        />
+        {activeImage && isVideoUrl(activeImage.src) ? (
+          <video
+            controls
+            playsInline
+            preload="metadata"
+            style={{
+              width: "100%",
+              height: "100%",
+              borderRadius: "var(--radius-l)",
+              border: "1px solid var(--neutral-alpha-weak)",
+              objectFit: "cover",
+              ...(images.length > 1 && {
+                cursor: "pointer",
+              }),
+            }}
+          >
+            <source src={activeImage.src} />
+          </video>
+        ) : (
+          <SmartImage
+            sizes={sizes}
+            priority
+            radius="l"
+            border="neutral-alpha-weak"
+            alt={activeImage?.alt}
+            aspectRatio={aspectRatio}
+            src={activeImage?.src}
+            style={{
+              ...(images.length > 1 && {
+                cursor: "pointer",
+              }),
+            }}
+          />
+        )}
       </RevealFx>
       {images.length > 1 && (
         <>
